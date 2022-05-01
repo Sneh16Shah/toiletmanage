@@ -1,6 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:toiletmanage/components/rounded_button.dart';
+import 'package:toiletmanage/resetpass.dart';
+import 'package:toiletmanage/reuse_widget/reuse.dart';
+import 'package:toiletmanage/setvalue.dart';
+import 'package:toiletmanage/signup.dart';
+import 'package:toiletmanage/utils/colors_util.dart';
 
 import 'components/rounded_input.dart';
 import 'components/rounded_password.dart';
@@ -13,76 +19,98 @@ class Admin extends StatefulWidget {
 
 class _LoginScreenState extends State<Admin> {
   @override
+  TextEditingController _passwordTextController = TextEditingController();
+  TextEditingController _emailTextController = TextEditingController();
+
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    double viewInset = MediaQuery.of(context)
-        .viewInsets
-        .bottom; // we are using this to determine Keyboard is opened or not
-    double defaultLoginsize = size.height - (size.height * 0.2);
-    double defaultRegistersize = size.height - (size.height * 0.1);
     return Scaffold(
-      body: Stack(
-        children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: Container(
-              width: size.width,
-              height: size.height * 0.1,
-              alignment: Alignment.bottomCenter,
-              child: IconButton(
-                icon: Icon(Icons.close),
-                onPressed: () {
-                  setState(() {});
-                },
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.center,
-            child: SingleChildScrollView(
-              child: Container(
-                width: size.width,
-                height: defaultLoginsize,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Welcome Admin",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                    ),
-                    SizedBox(height: 40),
-                    RoundedInput(icon: Icons.email),
-                    RoundedPasswordInput(hint: 'Password'),
-                    Roundedbutton(title: 'LOGIN'),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              width: double.infinity,
-              height: size.height * 0.1,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(100),
-                    topRight: Radius.circular(100),
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [
+            hexStringtocolor("CB2893"),
+            hexStringtocolor("9546C4"),
+            hexStringtocolor("5E61F4"),
+          ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(
+                  20, MediaQuery.of(context).size.height * 0.4, 20, 0),
+              child: Column(
+                children: <Widget>[
+                  const SizedBox(
+                    height: 30,
                   ),
-                  color: Colors.blueGrey[200]),
-              alignment: Alignment.center,
-              child: GestureDetector(
-                onTap: () {},
-                child: Text(
-                  "Don't have an account? Sign up",
-                  style: TextStyle(color: Colors.blue, fontSize: 18),
-                ),
+                  reusableTextField("Enter Email I'D", Icons.person_outline,
+                      false, _emailTextController),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  reusableTextField("Enter Password", Icons.lock_outline, true,
+                      _passwordTextController),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  firebasee(context, "LOGIN IN", () {
+                    FirebaseAuth.instance
+                        .signInWithEmailAndPassword(
+                            email: _emailTextController.text,
+                            password: _passwordTextController.text)
+                        .then((value) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => SetValue()));
+                    }).onError((error, stackTrace) {
+                      print("Error ${error.toString()}");
+                    });
+                  }),
+                  forgetPassword(context),
+                  signUpOption()
+                ],
               ),
             ),
           ),
-        ],
+        ));
+  }
+
+  Row signUpOption() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text("Don't have account?",
+            style: TextStyle(color: Colors.white70)),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => SignUpScreen()));
+          },
+          child: const Text(
+            " Sign Up",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget forgetPassword(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 35,
+      alignment: Alignment.bottomRight,
+      child: TextButton(
+        child: const Text(
+          "Forgot Password?",
+          style: TextStyle(color: Colors.white70),
+          textAlign: TextAlign.right,
+        ),
+        onPressed: () => Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ResetPassword())),
       ),
     );
   }
