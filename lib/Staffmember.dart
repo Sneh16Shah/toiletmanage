@@ -9,6 +9,8 @@ import 'package:toiletmanage/signupstaf.dart';
 import 'package:toiletmanage/utils/colors_util.dart';
 import 'package:toiletmanage/viewvalue.dart';
 
+import 'checkst.dart';
+
 double mq2_value = 0, turb = 0;
 
 class Staffmember extends StatefulWidget {
@@ -65,10 +67,8 @@ class _LoginScreenState extends State<Staffmember> {
                             email: _emailTextController.text,
                             password: _passwordTextController.text)
                         .then((value) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Checkvalue()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => checkst()));
                     }).onError((error, stackTrace) {
                       print("Error ${error.toString()}");
                     });

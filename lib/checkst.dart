@@ -11,12 +11,14 @@ import 'package:toiletmanage/components/input_container.dart';
 import 'package:toiletmanage/setvalue.dart';
 import 'package:toiletmanage/utils/colors_util.dart';
 
-class Checkvalue extends StatefulWidget {
+class checkst extends StatefulWidget {
+  const checkst({Key? key}) : super(key: key);
+
   @override
-  State<Checkvalue> createState() => _CheckvalueState();
+  State<checkst> createState() => _checkstState();
 }
 
-class _CheckvalueState extends State<Checkvalue> {
+class _checkstState extends State<checkst> {
   double ran_mq2 = 0, ran_turb = 0;
   Timer? timer;
   @override
@@ -37,8 +39,8 @@ class _CheckvalueState extends State<Checkvalue> {
       print('Message clicked!');
     });
     timer = Timer.periodic(Duration(seconds: 5), (timer) {
-      ran_mq2 = Random().nextDouble() * 8;
-      ran_turb = Random().nextDouble() * 800;
+      ran_mq2 = Random().nextDouble() * 5;
+      ran_turb = Random().nextDouble() * 500;
       setState(() {});
       if (ran_mq2 > mq2_value) {
         FirebaseFirestore.instance
@@ -62,10 +64,10 @@ class _CheckvalueState extends State<Checkvalue> {
     Map<String, dynamic> m = {
       "to": "/topics/system",
       "notification": {
-        "body": "High MQ2 and NTU Value",
+        "body": "High MQ2 Value",
         "title": "Alert",
       },
-      "body": "High MQ2 and NTU Value",
+      "body": "High MQ2 Value",
       "title": "Alert",
       "mutable_content": true,
       "sound": "Tri-tone"

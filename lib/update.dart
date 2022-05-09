@@ -50,12 +50,12 @@ class _UpdateState extends State<Update> {
                 const SizedBox(
                   height: 20,
                 ),
-                reusableTextField("Enter Email Id", Icons.contact_page, false,
-                    _idTextController),
+                reusableTextField(
+                    "Enter Id", Icons.contact_page, false, _idTextController),
                 const SizedBox(
                   height: 20,
                 ),
-                reusableTextField("Enter Password", Icons.phone, true,
+                reusableTextField("Enter Contact No.", Icons.phone, true,
                     _contactTextController),
                 const SizedBox(
                   height: 20,
