@@ -1,15 +1,15 @@
-#GROUP 4(SECTION-B)
+# GROUP 4(SECTION-B)
 
-#SMART TOILET CLEANING MANAGEMENT SYSTEM
+# SMART TOILET CLEANING MANAGEMENT SYSTEM
 
-##GROUP MEMBERS:
+## GROUP MEMBERS:
 
 1. KARTIK PAL (IIT2020135)
 2. SHAH SNEH NIKESH KUMAR (IIT2020153)
 3. RAHUL SINGH (IIT2020176)
 4. DEVANSHU GUPTA (IIT2020186)
 
-##SOFTWARE USED:
+## SOFTWARE USED:
 
 1. Android Studio
 2. Flutter
@@ -18,7 +18,7 @@
 Smart Toilet Cleaning management system application. It helps the admin/staff members to know and set threshold values and information 
 about the toilets.
 
-##Features :
+## Features :
 1. New registration (signup for admin , staff-member).
 2. User login/logout.
 3. Cleaning of toilets.
@@ -29,7 +29,7 @@ about the toilets.
 8. Alarm notifications in case of high values.
 
 
-##Instructions to run:
+## Instructions to run:
 
 1. Install the above dependencies.
 2. Download the project and extract it.
