@@ -1,16 +1,39 @@
-# toiletmanage
+#GROUP 4(SECTION-B)
 
-A new Flutter project.
+#SMART TOILET CLEANING MANAGEMENT SYSTEM
 
-## Getting Started
+##GROUP MEMBERS:
 
-This project is a starting point for a Flutter application.
+1. KARTIK PAL (IIT2020135)
+2. SHAH SNEH NIKESH KUMAR (IIT2020153)
+3. RAHUL SINGH (IIT2020176)
+4. DEVANSHU GUPTA (IIT2020186)
 
-A few resources to get you started if this is your first Flutter project:
+##SOFTWARE USED:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+1. Android Studio
+2. Flutter
+3. Mysql(XAMPP)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Smart Toilet Cleaning management system application. It helps the admin/staff members to know and set threshold values and information 
+about the toilets.
+
+##Features :
+1. New registration (signup for admin , staff-member).
+2. User login/logout.
+3. Cleaning of toilets.
+4. Viewing and updating the threshold status.
+5. See the log status of the application.
+6. Forget and reset passwords and details.
+7. Storing ids , passwords and contact details.
+8. Alarm notifications in case of high values.
+
+
+##Instructions to run:
+
+1. Install the above dependencies.
+2. Download the project and extract it.
+3. Open it in Android studio.
+4. Create a virtual device / emulator to run it.
+5. Click the run button to run the application in virtual device.
+6. See the video for further run and use of application.
