@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "300060210344",
+    "project_id": "signin-45615",
+    "storage_bucket": "signin-45615.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:300060210344:android:b66aed853dad6d03223e9d",
+        "android_client_info": {
+          "package_name": "com.example.toiletmanage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "300060210344-olkokbujnkj91cttrpnjcmgcd6b4r66p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDF8OixVdN2_wMdXCyNo25oEbmmmAyj0t0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "300060210344-olkokbujnkj91cttrpnjcmgcd6b4r66p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

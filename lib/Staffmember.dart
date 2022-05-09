@@ -1,14 +1,15 @@
-import 'package:flutter/gestures.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:toiletmanage/components/rounded_button.dart';
+import 'package:toiletmanage/Admin.dart';
+import 'package:toiletmanage/check.dart';
 import 'package:toiletmanage/resetpass.dart';
 import 'package:toiletmanage/reuse_widget/reuse.dart';
 import 'package:toiletmanage/signup.dart';
+import 'package:toiletmanage/signupstaf.dart';
 import 'package:toiletmanage/utils/colors_util.dart';
 import 'package:toiletmanage/viewvalue.dart';
 
-import 'components/rounded_input.dart';
-import 'components/rounded_password.dart';
+double mq2_value = 0, turb = 0;
 
 class Staffmember extends StatefulWidget {
   const Staffmember({Key? key}) : super(key: key);
@@ -25,8 +26,10 @@ class _LoginScreenState extends State<Staffmember> {
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          centerTitle: true,
+          backgroundColor: Colors.purple[900],
           elevation: 0,
+          title: Text('Staffmember Login'),
         ),
         body: Container(
           width: MediaQuery.of(context).size.width,
@@ -57,8 +60,18 @@ class _LoginScreenState extends State<Staffmember> {
                     height: 20,
                   ),
                   firebasee(context, "LOGIN IN", () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Viewvalue()));
+                    FirebaseAuth.instance
+                        .signInWithEmailAndPassword(
+                            email: _emailTextController.text,
+                            password: _passwordTextController.text)
+                        .then((value) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Checkvalue()));
+                    }).onError((error, stackTrace) {
+                      print("Error ${error.toString()}");
+                    });
                   }),
                   forgetPassword(context),
                   signUpOption()
@@ -78,7 +91,7 @@ class _LoginScreenState extends State<Staffmember> {
         GestureDetector(
           onTap: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => SignUpScreen()));
+                MaterialPageRoute(builder: (context) => SignUpScreenstaff()));
           },
           child: const Text(
             " Sign Up",

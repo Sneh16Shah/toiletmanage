@@ -26,8 +26,10 @@ class _LoginScreenState extends State<Admin> {
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          centerTitle: true,
+          backgroundColor: Colors.purple[900],
           elevation: 0,
+          title: Text('Admin Login'),
         ),
         body: Container(
           width: MediaQuery.of(context).size.width,
@@ -70,6 +72,7 @@ class _LoginScreenState extends State<Admin> {
                     });
                   }),
                   forgetPassword(context),
+                  Padding(padding: EdgeInsets.fromLTRB(20, 60, 20, 0)),
                   signUpOption()
                 ],
               ),
@@ -83,7 +86,7 @@ class _LoginScreenState extends State<Admin> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text("Don't have account?",
-            style: TextStyle(color: Colors.white70)),
+            style: TextStyle(fontSize: 15, color: Colors.white70)),
         GestureDetector(
           onTap: () {
             Navigator.push(context,
@@ -91,7 +94,8 @@ class _LoginScreenState extends State<Admin> {
           },
           child: const Text(
             " Sign Up",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
           ),
         )
       ],
@@ -106,7 +110,7 @@ class _LoginScreenState extends State<Admin> {
       child: TextButton(
         child: const Text(
           "Forgot Password?",
-          style: TextStyle(color: Colors.white70),
+          style: TextStyle(color: Colors.white70, fontSize: 15),
           textAlign: TextAlign.right,
         ),
         onPressed: () => Navigator.push(
